@@ -36,5 +36,49 @@ associated to it
 22.	**Types_of_special_requests**: Number of special requests made by the customer (e.g. Twin bed or high floor)
 23.	**Stays_in_weekend_nights**, **Stays_in_week_nights**: Number of weekend nights and week nights the guest stayed or booked to stay at the hotel.
 ## DATA WRANGLING
-1. Check for duplicated rows
-2. Handling missing values.
+1. **Duplicate values:** All the duplicated values are dropped.
+2. **Missing values/Null Values:** There were 4 columns which has missing values. They are handled in different way in each column depending on the number of missing value and based on the nature of the missing data..
+- **Company** This column has most of its values as
+null. Lets drop this column.
+- **Agent** This column has some of its values as null value, this can be because this tickets might not be booked through agents. Lets convert the null values with 0.
+- **Country** This column has very few values as null. Lets replace this null value with others.
+- **Children** This column has only 4 null values which is negligible. There are many 0 values in this column that means null value are those which are somehow missed to be added. Since this is very small we can replace them with mean value.
+
+3. **Adding new columns:**
+- total staying days in hotels: The code calculates the total staying days in hotels by summing the values from the 'stays_in_weekend_nights' and 'stays_in_week_nights' columns. It creates a new column named 'total_stay' to store these calculated values.
+- Adding total_member: The code computes the total number of people (guests) by summing the values from the 'adults', 'children', and 'babies' columns. It creates a new column named 'total_people' to store the total count of people.
+
+4. **Converting data types**: The code converts the data types of the agent columns from float to object using the astype() method. This ensures that this columns contain string datatype as the agent type is categorical values.
+## Problem Statement
+<u>**Booking Analysis**</u>
+- Which type of hotel has maximum booking?
+- Which agent has done max number of bookings?
+- Which Distibution channel lead to maximum booking?
+
+<u>**Know about your hotel**</u>
+- Which is most preferred meal?
+- Which country do most guests come from??
+- Which is the most preferred room type?
+- How long people stay at hotel?
+
+<u>**Revnue Analysis**</u>
+- Which type of hotel seems to make more revnue?
+- Which room type generates the hightes adr?
+- Which distribution channel brings better revnue generating deals for hotel?
+
+<u>**Cancellation analysis**</u>
+- Which type of hotel has more cancellation?
+- Which distribution channel has highest cancellation?
+- Is there any impact of longer waiting days and lead time on cancellation?
+
+<u>**Time wise Analysis**</u>
+- To track month-on-month booking?
+- To track the month-on-month adr of hotel?
+- To track the year-on-year booking?
+
+<u>**Customer retention**</u>
+- How-many percentage of guest has arrived again?
+- Which hotel has high chance that its customer will return for another stay?
+
+
+
